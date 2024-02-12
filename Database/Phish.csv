@@ -1,0 +1,2 @@
+randomID,SenderEmail,subject,hasAttachmentsStr,attachmentSha,senderIP,dateTime,recipient,recipientActions,
+100026452,jamesa@yahoo.co.uk,You have won a prize!,Y,ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad,10.24.143:22,11/02/2024,jamesd@hotmail.co.uk,Clicked email, did not open attachment
