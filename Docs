@@ -1,0 +1,18 @@
+--PLAN--
+
+•	Week 2-Week 5: 
+-	Use Trello to plan initial MoSCoW board, decide on project planning approach (Agile) and create initial project plan. Setup github repo.
+-	Conduct literature review and create report on findings, list sources for later.
+-	Choose final engineering approach (C++ or PowerApps) and start development in Week 4, focusing on MoSCoW objectives.
+-	Create testing plan for project
+-	Develop initial prototype with key features by Week 5
+-	Create legal/social/ethical/security issues report by end of Week 5/6
+-	Finish GUI implementation if using GUI, develop incident classifcation system and implement into application. All “must-have”project features should be complete by now.
+•	Week 6-Week 9
+-     Finish up project by Week 9. 
+-     Implement search functionality features, sigma rule generation etc.
+- Evaluate performance of project, compare and contrast features available in the application to initial features planned above. 
+-     Structure report and presentation. Draft of critical reflection.
+
+•	Week 10-13
+- Refine report and presentation, finishing touches on project.
