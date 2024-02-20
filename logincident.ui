@@ -63,7 +63,7 @@
     <string>Create and Log Phishing Incident</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="dataBreachIncident">
    <property name="geometry">
     <rect>
      <x>390</x>
@@ -79,7 +79,7 @@
     <string>Create and Log Data Breach Incident</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="malwareAttack">
    <property name="geometry">
     <rect>
      <x>390</x>

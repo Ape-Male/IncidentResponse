@@ -15,7 +15,7 @@ PhishIncident::PhishIncident(QWidget *parent)
     , ui(new Ui::PhishIncident)
 {
     ui->setupUi(this);
-    ui->setupUi(this);
+    //ui->setupUi(this);
     setWindowFlags(windowFlags() & ~Qt::WindowMaximizeButtonHint);
     setFixedSize(1280, 1080);
     setWindowTitle("Incident Response Tool");
@@ -38,7 +38,6 @@ QString PhishIncident::generateRandomID() const
 }
 
 void PhishIncident::saveIncident(){
-    QMessageBox::critical(this,"DUDE!","IT WORKS");
     QString malSenderStore = ui->malSender->text();
     QString emailSubjectStore = ui->emailSubject->text();
     QString emailAttachStore = ui->emailAttach->text();
@@ -49,7 +48,7 @@ void PhishIncident::saveIncident(){
     QString incidentAnalysisStore = ui->incidentAnalysis->toPlainText();
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", "IncidentsConnection");
-    db.setDatabaseName("D:/Dissertation/SQL TEST/SQL/IncidentsDatabase.db"); // Update path
+    db.setDatabaseName("D:/Dissertation/SQL TEST/SQL/IncidentsDatabase.db");
     if (!db.open()) {
         QMessageBox::critical(this, "Error", "Failed to open database: " + db.lastError().text());
         return;

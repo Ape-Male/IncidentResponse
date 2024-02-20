@@ -14,6 +14,8 @@ class BreachIncidentCreation : public QDialog
 public:
     explicit BreachIncidentCreation(QWidget *parent = nullptr);
     ~BreachIncidentCreation();
+    void saveIncident();
+    QString GenerateRandomID() const;
 
 private:
     Ui::BreachIncidentCreation *ui;

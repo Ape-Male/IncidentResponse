@@ -14,7 +14,9 @@ SOURCES += \
     main.cpp \
     mainmenu.cpp \
     mainwindow.cpp \
+    malwareincident.cpp \
     phishincident.cpp \
+    ransomwareincident.cpp \
     sqlite3.c
 
 HEADERS += \
@@ -22,14 +24,18 @@ HEADERS += \
     logincident.h \
     mainmenu.h \
     mainwindow.h \
-    phishincident.h
+    malwareincident.h \
+    phishincident.h \
+    ransomwareincident.h
 
 FORMS += \
     breachincidentcreation.ui \
     logincident.ui \
     mainmenu.ui \
     mainwindow.ui \
-    phishincident.ui
+    malwareincident.ui \
+    phishincident.ui \
+    ransomwareincident.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

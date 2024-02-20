@@ -1,5 +1,5 @@
-#include "breachincidentcreation.h"
-#include "ui_breachincidentcreation.h"
+#include "ransomwareincident.h"
+#include "ui_ransomwareincident.h"
 #include <QDir>
 #include <QCoreApplication>
 #include <QSqlDatabase>
@@ -10,25 +10,23 @@
 #include <QString>
 #include <QRandomGenerator>
 
-BreachIncidentCreation::BreachIncidentCreation(QWidget *parent)
+ransomwareIncident::ransomwareIncident(QWidget *parent)
     : QDialog(parent)
-    , ui(new Ui::BreachIncidentCreation)
+    , ui(new Ui::ransomwareIncident)
 {
-    ui->setupUi(this);
     ui->setupUi(this);
     setWindowFlags(windowFlags() & ~Qt::WindowMaximizeButtonHint);
     setFixedSize(1280, 1080);
     setWindowTitle("Incident Response Tool");
     setStyleSheet("background-color: #2d42a8;");
-    connect(ui->breachsaveButton, &QPushButton::clicked, this, &BreachIncidentCreation::saveIncident);
-
 }
 
-BreachIncidentCreation::~BreachIncidentCreation()
+ransomwareIncident::~ransomwareIncident()
 {
     delete ui;
 }
-QString BreachIncidentCreation::GenerateRandomID() const
+
+QString ransomwareIncident::GenerateRandomID() const
 {
     QString randomID;
     for (int i = 0; i < 9; ++i) {
@@ -37,42 +35,42 @@ QString BreachIncidentCreation::GenerateRandomID() const
     return randomID;
 }
 
-void BreachIncidentCreation::saveIncident(){
-    QString breachTypeStore = ui->breachType->text();
-    QString breachDateTimeStore = ui->breachDateTime->text();
-    QString breachMethodStore = ui->breachMethod->text();
+void ransomwareIncident::on_ransomsaveButton_clicked()
+{
+    QString ransomTypeStore = ui->ransomType->text();
+    QString DateTimeStore = ui->breachDateTime->text();
+    QString attackVectorStore = ui->attackVector->text();
     QString dataAffectedStore = ui->dataAffected->text();
-    QString exfilMethodStore = ui->exfilMethod->text();
-    QString exfilInfoStore = ui->exfilInfo->text();
+    QString ransomCommsStore = ui->ransomComms->text();
+    QString affectedSystemsStore = ui->affectedSystems->text();
     QString externalNotifyStore = ui->externalNotify->text();
     QString gdprStore = ui->gdpr->text();
-    QString breachEmailStore = ui->breachEmail->text();
+    QString ransomSHAStore = ui->ransomSHA->text();
     QString incidentAnalysisStore = ui->incidentAnalysis->toPlainText();
 
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", "IncidentsConnection");
+
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", "IncidentsConnectionRansom");
     db.setDatabaseName("D:/Dissertation/SQL TEST/SQL/IncidentsDatabase.db");
     if (!db.open()) {
         QMessageBox::critical(this, "Error", "Failed to open database: " + db.lastError().text());
         return;
     }
-
     QSqlQuery query(db);
-    query.prepare("INSERT INTO DataBreach (IncidentID, breachType, breachDateTime, breachMethod, dataAffected, exfilMethod, exfilInfo, externalNotify, gdpr, breachEmail, IncidentAnalysis) "
-                  "VALUES (:IncidentID, :breachType, :breachDateTime, :breachMethod, :dataAffected, :exfilMethod, :exfilInfo, :externalNotify, :gdpr, :breachEmail, :IncidentAnalysis)");
+    query.prepare("INSERT INTO Ransomware (IncidentID, ransomType, breachDateTime, attackVector, dataAffected, ransomComms, affectedSystems, externalNotify, gdpr, ransomSHA, IncidentAnalysis) "
+                  "VALUES (:IncidentID, :ransomType, :breachDateTime, :attackVector, :dataAffected, :ransomComms, :affectedSystems, :externalNotify, :gdpr, :ransomSHA, :IncidentAnalysis)");
 
     QString incidentID = GenerateRandomID();
     query.bindValue(":IncidentID", incidentID);
-    query.bindValue(":breachType", breachTypeStore);
-    query.bindValue(":breachDateTime", breachDateTimeStore);
-    query.bindValue(":breachMethod", breachMethodStore);
+    query.bindValue(":ransomType", ransomTypeStore);
+    query.bindValue(":breachDateTime", DateTimeStore);
+    query.bindValue(":attackVector", attackVectorStore);
     query.bindValue(":dataAffected", dataAffectedStore);
-    query.bindValue(":exfilMethod", exfilMethodStore);
-    query.bindValue(":exfilInfo", exfilInfoStore);
+    query.bindValue(":ransomComms", ransomCommsStore);
+    query.bindValue(":affectedSystems", affectedSystemsStore);
     query.bindValue(":externalNotify", externalNotifyStore);
     query.bindValue(":gdpr", gdprStore);
-    query.bindValue(":breachEmail", breachEmailStore);
+    query.bindValue(":ransomSHA", ransomSHAStore);
     query.bindValue(":IncidentAnalysis", incidentAnalysisStore);
-
 
     if (!query.exec()) {
         QMessageBox::critical(this, "Error", "Failed to insert incident information into database: " + query.lastError().text());
@@ -83,3 +81,4 @@ void BreachIncidentCreation::saveIncident(){
     db.close();
 
 }
+

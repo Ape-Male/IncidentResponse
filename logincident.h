@@ -20,6 +20,12 @@ private slots:
 
     void on_backButton_clicked();
 
+    void on_dataBreachIncident_clicked();
+
+    void on_malwareAttack_clicked();
+
+    void on_pushButton_4_clicked();
+
 private:
     Ui::LogIncident *ui;
 };

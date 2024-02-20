@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>BreachIncidentCreation</class>
- <widget class="QDialog" name="BreachIncidentCreation">
+ <class>ransomwareIncident</class>
+ <widget class="QDialog" name="ransomwareIncident">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -14,31 +14,13 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #2d42a8; </string>
+   <string notr="true">background-color: #2d42a8</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>360</x>
-     <y>50</y>
-     <width>551</width>
-     <height>101</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>30</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Data Breach Incident Creation</string>
-   </property>
-  </widget>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>160</y>
+     <x>40</x>
+     <y>120</y>
      <width>1221</width>
      <height>451</height>
     </rect>
@@ -51,7 +33,7 @@
      <rect>
       <x>30</x>
       <y>60</y>
-      <width>241</width>
+      <width>311</width>
       <height>31</height>
      </rect>
     </property>
@@ -61,7 +43,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Enter the Breach Type:</string>
+     <string>Enter the Ransomware Type:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -87,7 +69,7 @@
      <rect>
       <x>30</x>
       <y>140</y>
-      <width>441</width>
+      <width>461</width>
       <height>31</height>
      </rect>
     </property>
@@ -97,7 +79,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Enter What Method Was Used to Breach:</string>
+     <string>What Attack Vector Was Used In the Breach?:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">
@@ -105,7 +87,7 @@
      <rect>
       <x>30</x>
       <y>180</y>
-      <width>711</width>
+      <width>501</width>
       <height>31</height>
      </rect>
     </property>
@@ -115,7 +97,7 @@
      </font>
     </property>
     <property name="text">
-     <string>What Data May Have Been Affected or Exposed By The Breach:</string>
+     <string>What Files were Encrypted By the Ransomware?:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_6">
@@ -123,7 +105,7 @@
      <rect>
       <x>30</x>
       <y>220</y>
-      <width>381</width>
+      <width>481</width>
       <height>31</height>
      </rect>
     </property>
@@ -133,7 +115,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Enter How The Data was Exfiltrated:</string>
+     <string>Have the Attackers Communicated in any way?:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_7">
@@ -177,7 +159,7 @@
      <rect>
       <x>30</x>
       <y>260</y>
-      <width>471</width>
+      <width>321</width>
       <height>31</height>
      </rect>
     </property>
@@ -187,7 +169,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Was the Data Exfiltrated Outside Of The UK?</string>
+     <string>What Systems were Affected?:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_10">
@@ -195,7 +177,7 @@
      <rect>
       <x>30</x>
       <y>380</y>
-      <width>761</width>
+      <width>351</width>
       <height>31</height>
      </rect>
     </property>
@@ -205,15 +187,15 @@
      </font>
     </property>
     <property name="text">
-     <string>Who Was the Initial Cause of the Breach? (If Applicable) (Email Address):</string>
+     <string>Enter the SHA Hash of the Ransomware :</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="breachType">
+   <widget class="QLineEdit" name="ransomType">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>450</x>
       <y>60</y>
-      <width>891</width>
+      <width>741</width>
       <height>24</height>
      </rect>
     </property>
@@ -228,7 +210,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="breachMethod">
+   <widget class="QLineEdit" name="attackVector">
     <property name="geometry">
      <rect>
       <x>490</x>
@@ -241,29 +223,29 @@
    <widget class="QLineEdit" name="dataAffected">
     <property name="geometry">
      <rect>
-      <x>680</x>
+      <x>550</x>
       <y>180</y>
-      <width>511</width>
+      <width>631</width>
       <height>24</height>
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="exfilMethod">
+   <widget class="QLineEdit" name="ransomComms">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>530</x>
       <y>220</y>
-      <width>781</width>
+      <width>661</width>
       <height>24</height>
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="exfilInfo">
+   <widget class="QLineEdit" name="affectedSystems">
     <property name="geometry">
      <rect>
-      <x>500</x>
+      <x>370</x>
       <y>260</y>
-      <width>691</width>
+      <width>821</width>
       <height>24</height>
      </rect>
     </property>
@@ -288,38 +270,56 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="breachEmail">
+   <widget class="QLineEdit" name="ransomSHA">
     <property name="geometry">
      <rect>
-      <x>780</x>
+      <x>390</x>
       <y>390</y>
-      <width>411</width>
+      <width>801</width>
       <height>24</height>
      </rect>
     </property>
    </widget>
   </widget>
-  <widget class="QTextEdit" name="incidentAnalysis">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>650</y>
-     <width>1181</width>
-     <height>381</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="breachsaveButton">
+  <widget class="QPushButton" name="ransomsaveButton">
    <property name="geometry">
     <rect>
      <x>590</x>
-     <y>1040</y>
+     <y>990</y>
      <width>80</width>
      <height>24</height>
     </rect>
    </property>
    <property name="text">
     <string>Save</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="incidentAnalysis">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>590</y>
+     <width>1221</width>
+     <height>381</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>20</y>
+     <width>551</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>30</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Ransomware Incident Creation</string>
    </property>
   </widget>
  </widget>
