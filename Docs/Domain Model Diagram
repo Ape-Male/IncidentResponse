@@ -1,0 +1,78 @@
+@startuml
+
+class User {
+    - username: string
+    - password: string
+}
+
+class PhishIncident {
+    - incidentID: string
+    - malSender: string
+    - emailSubject: string
+    - emailAttach: string
+    - emailSHA: string
+    - maliciousIP: string
+    - emailDateTime: string
+    - emailRecipient: string
+    - incidentAnalysis: string
+}
+
+class DataBreach {
+    - incidentID: string
+    - breachType: string
+    - breachDateTime: string
+    - breachMethod: string
+    - dataAffected: string
+    - exfilMethod: string
+    - exfilInfo: string
+    - externalNotify: string
+    - gdpr: string
+    - breachEmail: string
+    - incidentAnalysis: string
+}
+
+class MalwareIncident {
+    - incidentID: string
+    - malwareType: string
+    - malwareDateTime: string
+    - malwareSource: string
+    - systemsAffected: string
+    - threatActions: string
+    - detectionMethod: string
+    - userIsolation: string
+    - incidentAnalysis: string
+}
+
+class RansomwareIncident {
+    - incidentID: string
+    - ransomType: string
+    - breachDateTime: string
+    - attackVector: string
+    - dataAffected: string
+    - ransomComms: string
+    - affectedSystems: string
+    - externalNotify: string
+    - gdpr: string
+    - ransomSHA: string
+    - incidentAnalysis: string
+}
+
+class Search {
+    - incidentID: string
+    - filters: string
+}
+
+class Classification {
+    - incidentID: string
+    - classificationType: string
+    - classificationDetails: string
+}
+
+User -- PhishIncident
+User -- DataBreach
+User -- MalwareIncident
+User -- RansomwareIncident
+User -- Search
+User -- Classification
+
+@enduml
