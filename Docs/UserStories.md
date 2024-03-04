@@ -19,3 +19,19 @@ information.
 As a User, I want the system to automatically generate Sigma and/or Yara
 rules based on incident details, streamlining the process of creating
 and implementing rules for threat detection and prevention.
+
+
+
+
+
+
+
+
+
+
+
+As a SOC analyst, I want to be able to create and log incidents and grade them on severity.
+
+As a SOC analyst, I want to be able to search the incident database for records based on various factors, and edit and save those incidents back to the database.
+
+
