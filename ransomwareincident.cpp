@@ -9,6 +9,7 @@
 #include <QMessageBox>
 #include <QString>
 #include <QRandomGenerator>
+#include "mainmenu.h"
 
 ransomwareIncident::ransomwareIncident(QWidget *parent)
     : QDialog(parent)
@@ -47,17 +48,21 @@ void ransomwareIncident::on_ransomsaveButton_clicked()
     QString gdprStore = ui->gdpr->text();
     QString ransomSHAStore = ui->ransomSHA->text();
     QString incidentAnalysisStore = ui->incidentAnalysis->toPlainText();
+    QString severityStore = ui->severity->currentText();
+    QString statusStore = ui->ticketStatus->currentText();
 
+    QString dbFilePath = QDir(QCoreApplication::applicationDirPath()).filePath("../../../SQL TEST/SQL/IncidentsDatabase.db");
 
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", "IncidentsConnectionRansom");
-    db.setDatabaseName("D:/Dissertation/SQL TEST/SQL/IncidentsDatabase.db");
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", "IncidentsConnection");
+    db.setDatabaseName(dbFilePath);
     if (!db.open()) {
         QMessageBox::critical(this, "Error", "Failed to open database: " + db.lastError().text());
         return;
     }
+
     QSqlQuery query(db);
-    query.prepare("INSERT INTO Ransomware (IncidentID, ransomType, breachDateTime, attackVector, dataAffected, ransomComms, affectedSystems, externalNotify, gdpr, ransomSHA, IncidentAnalysis) "
-                  "VALUES (:IncidentID, :ransomType, :breachDateTime, :attackVector, :dataAffected, :ransomComms, :affectedSystems, :externalNotify, :gdpr, :ransomSHA, :IncidentAnalysis)");
+    query.prepare("INSERT INTO Ransomware (IncidentID, ransomType, breachDateTime, attackVector, dataAffected, ransomComms, affectedSystems, externalNotify, gdpr, ransomSHA, IncidentAnalysis, severity, ticketStatus) "
+                  "VALUES (:IncidentID, :ransomType, :breachDateTime, :attackVector, :dataAffected, :ransomComms, :affectedSystems, :externalNotify, :gdpr, :ransomSHA, :IncidentAnalysis, :severity, :ticketStatus)");
 
     QString incidentID = GenerateRandomID();
     query.bindValue(":IncidentID", incidentID);
@@ -71,6 +76,8 @@ void ransomwareIncident::on_ransomsaveButton_clicked()
     query.bindValue(":gdpr", gdprStore);
     query.bindValue(":ransomSHA", ransomSHAStore);
     query.bindValue(":IncidentAnalysis", incidentAnalysisStore);
+    query.bindValue(":severity", severityStore);
+    query.bindValue(":ticketStatus", statusStore);
 
     if (!query.exec()) {
         QMessageBox::critical(this, "Error", "Failed to insert incident information into database: " + query.lastError().text());
@@ -79,6 +86,16 @@ void ransomwareIncident::on_ransomsaveButton_clicked()
     }
 
     db.close();
+
+}
+
+
+void ransomwareIncident::on_pushButton_clicked()
+{
+    this->hide();
+    mainMenu menu;
+    menu.setModal(true);
+    menu.exec();
 
 }
 

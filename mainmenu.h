@@ -18,7 +18,9 @@ public:
 private slots:
     void on_logIncidentButton_clicked();
 
-    void on_exitButton_clicked();
+    void on_searchIncidentButon_clicked();
+
+    void on_viewIncidentsButton_clicked();
 
 private:
     Ui::mainMenu *ui;

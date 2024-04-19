@@ -19,6 +19,8 @@ private slots:
     void on_ransomsaveButton_clicked();
     QString GenerateRandomID() const;
 
+    void on_pushButton_clicked();
+
 private:
     Ui::ransomwareIncident *ui;
 };

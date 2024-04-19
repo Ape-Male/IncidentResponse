@@ -7,7 +7,10 @@
 #include <QSqlError>
 #include <QDebug>
 #include <QMessageBox>
-#include "mainmenu.h";
+#include "mainmenu.h"
+
+//extern QString userFilePath;
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -35,6 +38,7 @@ void MainWindow::on_loginButton_clicked()
 {
     QString username = ui->userName->text();
     QString password = ui->passWordInfo->text();
+     //userFilePath = ui->DataBaseFilePath->text();
 
     qDebug() << "Username: " << username;
     qDebug() << "Password: " << password;
@@ -44,7 +48,7 @@ void MainWindow::on_loginButton_clicked()
         return;
     }
 
-    QString dbFilePath = QDir(QCoreApplication::applicationDirPath()).filePath("D:/Dissertation/SQL TEST/SQL/logins.db");
+    QString dbFilePath = QDir(QCoreApplication::applicationDirPath()).filePath("../../../SQL TEST/SQL/logins.db");
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName(dbFilePath);

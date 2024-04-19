@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PhishIncident</class>
- <widget class="QDialog" name="PhishIncident">
+ <class>phishincidenteditor</class>
+ <widget class="QDialog" name="phishincidenteditor">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -14,24 +14,35 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #2d42a8;</string>
+   <string notr="true">background-color: #2d42a8;color:white;</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QTextEdit" name="incidentAnalysis">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>10</y>
-     <width>591</width>
-     <height>91</height>
+     <x>40</x>
+     <y>540</y>
+     <width>1201</width>
+     <height>461</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <pointsize>36</pointsize>
-    </font>
+   <property name="styleSheet">
+    <string notr="true">color: white;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>500</y>
+     <width>291</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:white;</string>
    </property>
    <property name="text">
-    <string>Phishing Incident Creation</string>
+    <string>Enter Analysis/Timeline/Response to Incident:</string>
    </property>
   </widget>
   <widget class="QGroupBox" name="groupBox">
@@ -364,35 +375,6 @@
     </item>
    </widget>
   </widget>
-  <widget class="QTextEdit" name="incidentAnalysis">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>540</y>
-     <width>1201</width>
-     <height>461</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: white;</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_9">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>500</y>
-     <width>291</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color:white;</string>
-   </property>
-   <property name="text">
-    <string>Enter Analysis/Timeline/Response to Incident:</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="saveButton">
    <property name="geometry">
     <rect>
@@ -406,11 +388,29 @@
     <string>Save</string>
    </property>
   </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>10</y>
+     <width>591</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>36</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Phishing Incident Creation</string>
+   </property>
+  </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>1130</x>
-     <y>1020</y>
+     <x>1140</x>
+     <y>1040</y>
      <width>80</width>
      <height>24</height>
     </rect>

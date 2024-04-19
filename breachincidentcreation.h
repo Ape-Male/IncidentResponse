@@ -17,6 +17,9 @@ public:
     void saveIncident();
     QString GenerateRandomID() const;
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::BreachIncidentCreation *ui;
 };

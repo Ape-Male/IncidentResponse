@@ -1,6 +1,8 @@
 #include "mainmenu.h"
+#include "search.h"
 #include "ui_mainmenu.h"
 #include "logincident.h"
+#include "dashboard.h"
 
 mainMenu::mainMenu(QWidget *parent)
     : QDialog(parent)
@@ -29,4 +31,23 @@ void mainMenu::on_logIncidentButton_clicked()
 
 
 
+
+
+void mainMenu::on_searchIncidentButon_clicked()
+{
+    this->hide();
+    Search searchincident;
+    searchincident.setModal(true);
+    searchincident.exec();
+}
+
+
+void mainMenu::on_viewIncidentsButton_clicked()
+{
+    this->hide();
+    dashboard Dash;
+    Dash.setModal(true);
+    Dash.exec();
+
+}
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>malwareincident</class>
- <widget class="QDialog" name="malwareincident">
+ <class>databreacheditor</class>
+ <widget class="QDialog" name="databreacheditor">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -14,37 +14,16 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #2d42a8;</string>
+   <string notr="true">background-color: #2d42a8; color:white;</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>380</x>
-     <y>-1</y>
-     <width>522</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>34</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Malware Incident Creation</string>
-   </property>
-  </widget>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>60</y>
+     <x>50</x>
+     <y>80</y>
      <width>1221</width>
-     <height>481</height>
+     <height>511</height>
     </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: white;</string>
    </property>
    <property name="title">
     <string>Incident</string>
@@ -54,7 +33,7 @@
      <rect>
       <x>30</x>
       <y>60</y>
-      <width>251</width>
+      <width>241</width>
       <height>31</height>
      </rect>
     </property>
@@ -64,7 +43,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Enter the Malware Type:</string>
+     <string>Enter the Breach Type:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -72,7 +51,7 @@
      <rect>
       <x>30</x>
       <y>100</y>
-      <width>501</width>
+      <width>471</width>
       <height>31</height>
      </rect>
     </property>
@@ -82,7 +61,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Enter the Date of When the Malware Was Found:</string>
+     <string>Enter the Date of When the Breach Occured:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -90,7 +69,7 @@
      <rect>
       <x>30</x>
       <y>140</y>
-      <width>511</width>
+      <width>441</width>
       <height>31</height>
      </rect>
     </property>
@@ -100,7 +79,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Enter the Malware Source: (attachment, website):</string>
+     <string>Enter What Method Was Used to Breach:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">
@@ -118,7 +97,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Enter the Systems Affected By the Malware and associated emails:</string>
+     <string>What Data May Have Been Affected or Exposed By The Breach:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_6">
@@ -126,7 +105,7 @@
      <rect>
       <x>30</x>
       <y>220</y>
-      <width>511</width>
+      <width>381</width>
       <height>31</height>
      </rect>
     </property>
@@ -136,7 +115,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Have Any Actions Been Taken Against the Threat?:</string>
+     <string>Enter How The Data was Exfiltrated:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_7">
@@ -154,7 +133,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Have the User/Users Computers Been Isolated?:</string>
+     <string>Have External Parties Been Notified About the Breach?:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_8">
@@ -162,7 +141,7 @@
      <rect>
       <x>30</x>
       <y>340</y>
-      <width>531</width>
+      <width>571</width>
       <height>31</height>
      </rect>
     </property>
@@ -172,7 +151,7 @@
      </font>
     </property>
     <property name="text">
-     <string>What Behaviours Were Exhibited by the Malware?:</string>
+     <string>Has GDPR Been Violated During This Breach (By Us?):</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_9">
@@ -190,7 +169,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Enter How the Threat Was Detected:</string>
+     <string>Was the Data Exfiltrated Outside Of The UK?</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_10">
@@ -198,7 +177,7 @@
      <rect>
       <x>30</x>
       <y>380</y>
-      <width>471</width>
+      <width>761</width>
       <height>31</height>
      </rect>
     </property>
@@ -208,10 +187,10 @@
      </font>
     </property>
     <property name="text">
-     <string>SHA Hash of Malware Artifact if Recovered?:</string>
+     <string>Who Was the Initial Cause of the Breach? (If Applicable) (Email Address):</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="malwareType">
+   <widget class="QLineEdit" name="breachType">
     <property name="geometry">
      <rect>
       <x>300</x>
@@ -221,47 +200,47 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="malwareSource">
+   <widget class="QLineEdit" name="breachMethod">
     <property name="geometry">
      <rect>
-      <x>570</x>
+      <x>490</x>
       <y>140</y>
-      <width>621</width>
+      <width>701</width>
       <height>24</height>
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="systemsAffected">
+   <widget class="QLineEdit" name="dataAffected">
     <property name="geometry">
      <rect>
-      <x>710</x>
+      <x>680</x>
       <y>180</y>
-      <width>481</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="threatActions">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>220</y>
-      <width>641</width>
+      <width>511</width>
       <height>24</height>
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="detectionMethod">
+   <widget class="QLineEdit" name="exfilMethod">
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>260</y>
+      <y>220</y>
       <width>781</width>
       <height>24</height>
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="userIsolation">
+   <widget class="QLineEdit" name="exfilInfo">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>260</y>
+      <width>691</width>
+      <height>24</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="externalNotify">
     <property name="geometry">
      <rect>
       <x>610</x>
@@ -271,7 +250,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="malwareBehaviour">
+   <widget class="QLineEdit" name="gdpr">
     <property name="geometry">
      <rect>
       <x>590</x>
@@ -284,19 +263,19 @@
    <widget class="QLineEdit" name="breachEmail">
     <property name="geometry">
      <rect>
-      <x>490</x>
+      <x>780</x>
       <y>390</y>
-      <width>701</width>
+      <width>411</width>
       <height>24</height>
      </rect>
     </property>
    </widget>
-   <widget class="QDateTimeEdit" name="malwareDateTime">
+   <widget class="QDateTimeEdit" name="breachDateTime">
     <property name="geometry">
      <rect>
-      <x>570</x>
+      <x>490</x>
       <y>100</y>
-      <width>621</width>
+      <width>701</width>
       <height>25</height>
      </rect>
     </property>
@@ -304,8 +283,8 @@
    <widget class="QComboBox" name="ticketStatus">
     <property name="geometry">
      <rect>
-      <x>510</x>
-      <y>440</y>
+      <x>560</x>
+      <y>450</y>
       <width>72</width>
       <height>24</height>
      </rect>
@@ -329,8 +308,8 @@
    <widget class="QComboBox" name="severity">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>440</y>
+      <x>280</x>
+      <y>450</y>
       <width>72</width>
       <height>24</height>
      </rect>
@@ -356,32 +335,11 @@
      </property>
     </item>
    </widget>
-   <widget class="QLabel" name="label_11">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>430</y>
-      <width>131</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: white;</string>
-    </property>
-    <property name="text">
-     <string>Enter Severity:</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_12">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>430</y>
+      <x>410</x>
+      <y>440</y>
       <width>131</width>
       <height>41</height>
      </rect>
@@ -398,25 +356,33 @@
      <string>Ticket Status:</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>440</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="text">
+     <string>Enter Severity:</string>
+    </property>
+   </widget>
   </widget>
-  <widget class="QPlainTextEdit" name="IncidentAnalysis">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>560</y>
-     <width>1221</width>
-     <height>451</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: white;</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="malwareSave">
+  <widget class="QPushButton" name="breachsaveButton">
    <property name="geometry">
     <rect>
      <x>610</x>
-     <y>1030</y>
+     <y>1000</y>
      <width>80</width>
      <height>24</height>
     </rect>
@@ -425,11 +391,39 @@
     <string>Save</string>
    </property>
   </widget>
+  <widget class="QTextEdit" name="incidentAnalysis">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>610</y>
+     <width>1181</width>
+     <height>381</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>10</y>
+     <width>551</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>30</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Data Breach Incident Creation</string>
+   </property>
+  </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>1130</x>
-     <y>1030</y>
+     <x>1110</x>
+     <y>1010</y>
      <width>80</width>
      <height>24</height>
     </rect>

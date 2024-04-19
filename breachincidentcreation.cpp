@@ -9,13 +9,14 @@
 #include <QMessageBox>
 #include <QString>
 #include <QRandomGenerator>
+#include "mainmenu.h"
 
 BreachIncidentCreation::BreachIncidentCreation(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::BreachIncidentCreation)
 {
     ui->setupUi(this);
-    ui->setupUi(this);
+    //ui->setupUi(this);
     setWindowFlags(windowFlags() & ~Qt::WindowMaximizeButtonHint);
     setFixedSize(1280, 1080);
     setWindowTitle("Incident Response Tool");
@@ -48,17 +49,22 @@ void BreachIncidentCreation::saveIncident(){
     QString gdprStore = ui->gdpr->text();
     QString breachEmailStore = ui->breachEmail->text();
     QString incidentAnalysisStore = ui->incidentAnalysis->toPlainText();
+    QString severityStore = ui->severity->currentText();
+    QString statusStore = ui->ticketStatus->currentText();
+
+    QString dbFilePath = QDir(QCoreApplication::applicationDirPath()).filePath("../../../SQL TEST/SQL/IncidentsDatabase.db");
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", "IncidentsConnection");
-    db.setDatabaseName("D:/Dissertation/SQL TEST/SQL/IncidentsDatabase.db");
+    db.setDatabaseName(dbFilePath);
     if (!db.open()) {
         QMessageBox::critical(this, "Error", "Failed to open database: " + db.lastError().text());
         return;
     }
 
+
     QSqlQuery query(db);
-    query.prepare("INSERT INTO DataBreach (IncidentID, breachType, breachDateTime, breachMethod, dataAffected, exfilMethod, exfilInfo, externalNotify, gdpr, breachEmail, IncidentAnalysis) "
-                  "VALUES (:IncidentID, :breachType, :breachDateTime, :breachMethod, :dataAffected, :exfilMethod, :exfilInfo, :externalNotify, :gdpr, :breachEmail, :IncidentAnalysis)");
+    query.prepare("INSERT INTO DataBreach (IncidentID, breachType, breachDateTime, breachMethod, dataAffected, exfilMethod, exfilInfo, externalNotify, gdpr, breachEmail, IncidentAnalysis, severity, ticketStatus) "
+                  "VALUES (:IncidentID, :breachType, :breachDateTime, :breachMethod, :dataAffected, :exfilMethod, :exfilInfo, :externalNotify, :gdpr, :breachEmail, :IncidentAnalysis, :severity, :ticketStatus)");
 
     QString incidentID = GenerateRandomID();
     query.bindValue(":IncidentID", incidentID);
@@ -72,6 +78,8 @@ void BreachIncidentCreation::saveIncident(){
     query.bindValue(":gdpr", gdprStore);
     query.bindValue(":breachEmail", breachEmailStore);
     query.bindValue(":IncidentAnalysis", incidentAnalysisStore);
+    query.bindValue(":severity", severityStore);
+    query.bindValue(":ticketStatus", statusStore);
 
 
     if (!query.exec()) {
@@ -83,3 +91,13 @@ void BreachIncidentCreation::saveIncident(){
     db.close();
 
 }
+
+void BreachIncidentCreation::on_pushButton_clicked()
+{
+    this->hide();
+    mainMenu menu;
+    menu.setModal(true);
+    menu.exec();
+
+}
+

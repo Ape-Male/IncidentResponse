@@ -10,32 +10,49 @@ CONFIG += c++17
 
 SOURCES += \
     breachincidentcreation.cpp \
+    dashboard.cpp \
+    databreacheditor.cpp \
     logincident.cpp \
     main.cpp \
     mainmenu.cpp \
     mainwindow.cpp \
     malwareincident.cpp \
+    malwareincidenteditor.cpp \
     phishincident.cpp \
+    phishincidenteditor.cpp \
+    ransomwareeditor.cpp \
     ransomwareincident.cpp \
-    sqlite3.c
+    search.cpp
 
 HEADERS += \
     breachincidentcreation.h \
+    dashboard.h \
+    databreacheditor.h \
     logincident.h \
     mainmenu.h \
     mainwindow.h \
     malwareincident.h \
+    malwareincidenteditor.h \
     phishincident.h \
-    ransomwareincident.h
+    phishincidenteditor.h \
+    ransomwareeditor.h \
+    ransomwareincident.h \
+    search.h
 
 FORMS += \
     breachincidentcreation.ui \
+    dashboard.ui \
+    databreacheditor.ui \
     logincident.ui \
     mainmenu.ui \
     mainwindow.ui \
     malwareincident.ui \
+    malwareincidenteditor.ui \
     phishincident.ui \
-    ransomwareincident.ui
+    phishincidenteditor.ui \
+    ransomwareeditor.ui \
+    ransomwareincident.ui \
+    search.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -9,6 +9,7 @@
 #include <QMessageBox>
 #include <QString>
 #include <QRandomGenerator>
+#include "mainmenu.h"
 
 PhishIncident::PhishIncident(QWidget *parent)
     : QDialog(parent)
@@ -21,6 +22,8 @@ PhishIncident::PhishIncident(QWidget *parent)
     setWindowTitle("Incident Response Tool");
     setStyleSheet("background-color: #2d42a8;");
     connect(ui->saveButton, &QPushButton::clicked, this, &PhishIncident::saveIncident);
+
+
 
 }
 
@@ -46,17 +49,21 @@ void PhishIncident::saveIncident(){
     QString emailDateTimeStore = ui->emailDateTime->text();
     QString emailRecipientStore = ui->emailRecipient->text();
     QString incidentAnalysisStore = ui->incidentAnalysis->toPlainText();
+    QString severityStore = ui->severity->currentText();
+    QString statusStore = ui->ticketStatus->currentText();
 
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", "IncidentsConnection");
-    db.setDatabaseName("D:/Dissertation/SQL TEST/SQL/IncidentsDatabase.db");
+    QString dbFilePath = QDir(QCoreApplication::applicationDirPath()).filePath("../../../SQL TEST/SQL/IncidentsDatabase.db");
+
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", "IncidentsConnectionPhish");
+    db.setDatabaseName(dbFilePath);
     if (!db.open()) {
         QMessageBox::critical(this, "Error", "Failed to open database: " + db.lastError().text());
         return;
     }
 
     QSqlQuery query(db);
-    query.prepare("INSERT INTO Phish (IncidentID, MalSender, EmailSubject, EmailAttach, EmailSHA, MaliciousIP, EmailDateTime, EmailRecipient, IncidentAnalysis) "
-                  "VALUES (:IncidentID, :MalSender, :EmailSubject, :EmailAttach, :EmailSHA, :MaliciousIP, :EmailDateTime, :EmailRecipient, :IncidentAnalysis)");
+    query.prepare("INSERT INTO Phish (IncidentID, MalSender, EmailSubject, EmailAttach, EmailSHA, MaliciousIP, EmailDateTime, EmailRecipient, IncidentAnalysis, severity, ticketStatus) "
+                  "VALUES (:IncidentID, :MalSender, :EmailSubject, :EmailAttach, :EmailSHA, :MaliciousIP, :EmailDateTime, :EmailRecipient, :IncidentAnalysis, :severity, :ticketStatus)");
 
     QString incidentID = generateRandomID();
     query.bindValue(":IncidentID", incidentID);
@@ -68,6 +75,9 @@ void PhishIncident::saveIncident(){
     query.bindValue(":EmailDateTime", emailDateTimeStore);
     query.bindValue(":EmailRecipient", emailRecipientStore);
     query.bindValue(":IncidentAnalysis", incidentAnalysisStore);
+    query.bindValue(":severity", severityStore);
+    query.bindValue(":ticketStatus", statusStore);
+
 
     if (!query.exec()) {
         QMessageBox::critical(this, "Error", "Failed to insert incident information into database: " + query.lastError().text());
@@ -86,4 +96,14 @@ void PhishIncident::saveIncident(){
 
 
 
+
+
+void PhishIncident::on_pushButton_clicked()
+{
+    this->hide();
+    mainMenu menu;
+    menu.setModal(true);
+    menu.exec();
+
+}
 
